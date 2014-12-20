@@ -1,7 +1,7 @@
 FROM centos
 
 # Install some utilities
-RUN yum install -y wget tar
+RUN yum install -y wget tar perl perl-DBI
 
 # Make a software folder
 RUN mkdir software
