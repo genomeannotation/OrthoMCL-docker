@@ -7,27 +7,29 @@ RUN yum install -y wget tar perl perl-DBI gcc make
 RUN mkdir /software
 
 # Install blast
-RUN cd /software
-RUN wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.30+-x64-linux.tar.gz
-RUN tar -xzvf ncbi-blast-2.2.30+-x64-linux.tar.gz
-RUN rm ncbi-blast-2.2.30+-x64-linux.tar.gz
-RUN export PATH=$PATH:/software/ncbi-blast-2.2.30+/bin
+RUN cd /software \
+    && wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.30+-x64-linux.tar.gz \
+    && tar -xzvf ncbi-blast-2.2.30+-x64-linux.tar.gz \
+    && rm ncbi-blast-2.2.30+-x64-linux.tar.gz
 
 # Install MCL
-RUN cd /software
-RUN wget http://micans.org/mcl/src/mcl-14-137.tar.gz
-RUN tar -xzvf mcl-14-137.tar.gz
-RUN rm mcl-14-137.tar.gz
-RUN cd /software/mcl-14-137
-RUN ./configure --enable-blast --prefix=/software/mcl
-RUN make install
-RUN cd /software
-RUN rm -rf /software/mcl-14-137
-RUN export PATH=$PATH:/software/mcl/bin
+RUN cd /software \
+    && wget http://micans.org/mcl/src/mcl-14-137.tar.gz \
+    && tar -xzvf mcl-14-137.tar.gz \
+    && rm mcl-14-137.tar.gz \
+    && cd /software/mcl-14-137 \
+    && ./configure --enable-blast --prefix=/software/mcl \
+    && make install \
+    && cd /software \
+    && rm -rf /software/mcl-14-137
 
 # Install OrthoMCL
-RUN cd /software
-RUN wget http://www.orthomcl.org/common/downloads/software/v2.0/orthomclSoftware-v2.0.9.tar.gz
-RUN tar -xzvf orthomclSoftware-v2.0.9.tar.gz
-RUN rm orthomclSoftware-v2.0.9.tar.gz
-RUN export PATH=$PATH:/software/orthomclSoftware-v2.0.9/bin
+RUN cd /software \
+    && wget http://www.orthomcl.org/common/downloads/software/v2.0/orthomclSoftware-v2.0.9.tar.gz \
+    && tar -xzvf orthomclSoftware-v2.0.9.tar.gz \
+    && rm orthomclSoftware-v2.0.9.tar.gz
+
+# Setup the paths
+ENV PATH $PATH:/software/ncbi-blast-2.2.30+/bin
+ENV PATH $PATH:/software/mcl/bin
+ENV PATH $PATH:/software/orthomclSoftware-v2.0.9/bin
