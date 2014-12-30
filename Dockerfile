@@ -1,7 +1,7 @@
 FROM centos
 
 # Install some utilities
-RUN yum install -y wget tar perl perl-DBI gcc make
+RUN yum install -y wget tar perl perl-DBI perl-DBD-MySQL gcc make
 
 # Make a software folder
 RUN mkdir /software

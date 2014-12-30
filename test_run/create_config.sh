@@ -1,0 +1,12 @@
+echo dbVendor=mysql
+echo dbConnectString=dbi:mysql:orthomcl:$MYSQL_PORT_3306_TCP_ADDR:$MYSQL_PORT_3306_TCP_PORT
+echo dbLogin=orthomcl_user
+echo dbPassword=shhh_this_is_secret
+echo similarSequencesTable=SimilarSequences
+echo orthologTable=Ortholog
+echo inParalogTable=InParalog
+echo coOrthologTable=CoOrtholog
+echo interTaxonMatchView=InterTaxonMatch
+echo percentMatchCutoff=50
+echo evalueExponentCutoff=-5
+echo oracleIndexTblSpc=NONE
