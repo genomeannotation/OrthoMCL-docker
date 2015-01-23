@@ -8,9 +8,9 @@ RUN mkdir /software
 
 # Install blast
 RUN cd /software \
-    && wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.2.30+-x64-linux.tar.gz \
-    && tar -xzvf ncbi-blast-2.2.30+-x64-linux.tar.gz \
-    && rm ncbi-blast-2.2.30+-x64-linux.tar.gz
+    && wget ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/LATEST/blast-2.2.26-x64-linux.tar.gz \
+    && tar -xzvf blast-2.2.26-x64-linux.tar.gz \
+    && rm blast-2.2.26-x64-linux.tar.gz
 
 # Install MCL
 RUN cd /software \
@@ -30,6 +30,6 @@ RUN cd /software \
     && rm orthomclSoftware-v2.0.9.tar.gz
 
 # Setup the paths
-ENV PATH $PATH:/software/ncbi-blast-2.2.30+/bin
+ENV PATH $PATH:/software/blast-2.2.26/bin
 ENV PATH $PATH:/software/mcl/bin
 ENV PATH $PATH:/software/orthomclSoftware-v2.0.9/bin
