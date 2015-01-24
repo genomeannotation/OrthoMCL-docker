@@ -9,7 +9,7 @@ sleep 10
 
 # Start OrthoMCL container
 echo Starting OrthoMCL container...
-docker run -it --name orthomcl-run --link orthomcl-mysql:mysql -v `pwd`/test_run:/ortho_mcl_run tedsta/orthomcl /bin/bash # | tee .ortho_mcl_container_id | tail -n +2
+docker run -it --name orthomcl-run --link orthomcl-mysql:mysql -v `pwd`/test_run:/ortho_mcl_run orthomcl /bin/bash # | tee .ortho_mcl_container_id | tail -n +2
 
 # Only keep container id in temporary file
 echo `head -n 1 .ortho_mcl_container_id` > .ortho_mcl_container_id
